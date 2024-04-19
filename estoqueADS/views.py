@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
-
+from .models import Produtos
 
 def index(request):
-    frutas = ['Maçã', 'Uva', 'Jambo']
-    return render(request, 'pages/teste.html', {"frutas": frutas})
+    produtos = Produtos.objects.all()
+    return render(request, 'pages/index.html', {'produtos': produtos})

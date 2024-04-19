@@ -1,3 +1,47 @@
-/* body{
+nav{
+    background-color: #40cbaf;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+}
+  
+  nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+  
+  nav ul li:first-child {
+    margin-left: 0;
+}
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+body{
     background-color: black;
-} */
+}
+
+section{
+    padding: 4%;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #40cbaf;
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+}
+
+.form-inline{
+    align-items: end;
+}
+
+#add{
+    background-color: #40cbaf;
+    margin: 5% 0% 1% 18%;
+}
