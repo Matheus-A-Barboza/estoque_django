@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect
 from .models import Produtos
 from datetime import datetime
 
@@ -16,12 +16,21 @@ def adicionar_produto(request):
         codigo = request.POST['codigo']
         em_estoque = False
         
-        if quantidade > 0:
+        if int (quantidade) > 0:
             em_estoque = True
         data_criacao = datetime.now()
         
+        Produtos.objects.create(
+            nome=nome,
+            preco=preco,
+            descricao=descricao,
+            quantidade=quantidade,
+            em_estoque=em_estoque,
+            codigo=codigo,
+            data_criacao=data_criacao
+        )
+        
+        return redirect('index')
         
     else:
         return render(request, 'pages/adicionar_produto.html')
-    
-    return render(request, 'pages/adicionar_produto.html')
