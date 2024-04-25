@@ -46,12 +46,13 @@
                     <th>Preço</th>
                     <th>Quantidade</th>
                     <th>Estoque</th>
+                    <th>Código</th>
                 </thead>
                 <tbody>
                     {% for produto in produtos %}
                     <tr>
                         <td>
-                            {{produto.nome}}
+                            <a href="{% url 'produto' produto.id %}">{{produto.nome}}</a>
                         </td>
                         <td>
                             {{produto.preco}}
@@ -61,6 +62,9 @@
                         </td>
                         <td>
                             {{produto.em_estoque}}
+                        </td>
+                        <td>
+                            {{produto.codigo}}
                         </td>
                     </tr>
                     {%endfor%}

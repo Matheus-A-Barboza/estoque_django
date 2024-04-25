@@ -34,3 +34,11 @@ def adicionar_produto(request):
         
     else:
         return render(request, 'pages/adicionar_produto.html')
+    
+def produto(request, id):
+    detalhe = Produtos.objects.get(id=id)
+    return render(request, 'pages/produto.html', {'detalhe':detalhe})
+
+def excluir(request, id):
+    produto = Produtos.objects.get(id=id).delete()
+    return redirect('index')
