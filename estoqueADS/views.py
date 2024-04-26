@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Produtos
+from .models import Produtos, Categoria
 from datetime import datetime
 
 def index(request):
@@ -10,6 +10,7 @@ def adicionar_produto(request):
     
     if request.method == "POST":
         nome = request.POST['nome']
+        categoria = request.POST['categoria']
         preco = request.POST['preco']
         descricao = request.POST['descricao']
         quantidade = request.POST['quantidade']
@@ -22,6 +23,7 @@ def adicionar_produto(request):
         
         Produtos.objects.create(
             nome=nome,
+            categoria_id=categoria,
             preco=preco,
             descricao=descricao,
             quantidade=quantidade,
@@ -33,7 +35,8 @@ def adicionar_produto(request):
         return redirect('index')
         
     else:
-        return render(request, 'pages/adicionar_produto.html')
+        categorias = Categoria.objects.all()
+        return render(request, 'pages/adicionar_produto.html', {'categorias': categorias})
     
 def produto(request, id):
     detalhe = Produtos.objects.get(id=id)

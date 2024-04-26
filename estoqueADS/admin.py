@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Produtos
+from .models import Produtos, Categoria
 
 
 class adminProdutos (admin.ModelAdmin):
@@ -10,3 +10,4 @@ class adminProdutos (admin.ModelAdmin):
     list_per_page = 5
 
 admin.site.register(Produtos, adminProdutos)
+admin.site.register(Categoria)

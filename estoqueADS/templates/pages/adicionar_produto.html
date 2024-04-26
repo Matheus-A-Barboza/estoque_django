@@ -1,18 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/adicionar.css' %}">
 </head>
 <body>
-    <form method="POST"> {% csrf_token %}
-        <input type="text" name="nome" placeholder="nome">
-        <input type="number" name="preco" placeholder="preco">
-        <textarea name="descricao" id="" cols="30" rows="10" placeholder="descricao"></textarea>
-        <input type="number" name="quantidade" placeholder="quantidade">
-        <input type="text" name="codigo" placeholder="codigo">
-        <button type="submit">Cadastrar</button>
-    </form>
+    <div class="container-nav">
+        <nav>
+            <ul>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Pedidos</a></li>
+                <li><a href="#">Relatorios</a></li>
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </ul>
+        </nav>
+    </div>
+    <section>
+        <form method="POST"> {% csrf_token %}
+            <input type="text" name="nome" id="nome" placeholder="nome">
+            <select name="categoria" id="categoria">
+                {% for categoria in categorias %}
+                <option value="{{categoria.id}}">{{categoria.nome}}</option>
+                {%endfor%}
+            </select>
+            <input type="number" name="preco" id="preco" placeholder="preco">
+            <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="descricao"></textarea>
+            <input type="number" name="quantidade" id="quantidade" placeholder="quantidade">
+            <input type="text" name="codigo" id="codigo" placeholder="codigo">
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
 </body>
 </html>
